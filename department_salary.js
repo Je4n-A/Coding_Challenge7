@@ -2,7 +2,7 @@
 //Create a Department Structure
 
 const company = {
-    departemnts: [
+    departments: [
         {
             departmentName: 'HR',
             employees: [
@@ -28,7 +28,6 @@ const company = {
                     salary: 80000,
                     subordinates: []
                 }
-                
             ]
         },
         {
@@ -44,16 +43,44 @@ const company = {
                             subordinates: []
                         }
                     ]
-                
                 },
                 {
                     name: 'Mary',
                     salary: 100000,
                     subordinates: []
                 }
-                
             ]
         }
-    
     ]
+};
+
+// Create a Recursive Function to Calculate the Total Salary for a Department
+
+function calculateTotalSalary(company, departmentName) {
+    let totalSalary = 0;
+
+    for (const department of company.departments) {
+        if (department.departmentName === departmentName) {
+            for (const employee of department.employees) {
+                totalSalary += employee.salary;
+                totalSalary += calculateEmployeeSalary(employee);
+            }
+        }
+    }
+    return totalSalary;
 }
+
+// Recursive function to calculate the total salary of an employee and their subordinates helper function
+function calculateEmployeeSalary(employee) {
+    let totalSalary = 0;
+
+    for (const subordinate of employee.subordinates) {
+        totalSalary += subordinate.salary;
+        totalSalary += calculateEmployeeSalary(subordinate);
+    }
+
+    return totalSalary;
+}
+
+console.log(calculateTotalSalary(company, 'HR')); 
+console.log(calculateTotalSalary(company, 'Engineering')); 
