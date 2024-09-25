@@ -82,5 +82,5 @@ function calculateEmployeeSalary(employee) {
     return totalSalary;
 }
 
-console.log(calculateTotalSalary(company, 'HR')); 
-console.log(calculateTotalSalary(company, 'Engineering')); 
+console.log(`Total salary for HR department: $${calculateTotalSalary(company, 'HR')}`); 
+console.log(`Total salary for Engineering department: $${calculateTotalSalary(company, 'Engineering')}`); 
