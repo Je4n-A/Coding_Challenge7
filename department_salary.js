@@ -84,3 +84,17 @@ function calculateEmployeeSalary(employee) {
 
 console.log(`Total salary for HR department: $${calculateTotalSalary(company, 'HR')}`); 
 console.log(`Total salary for Engineering department: $${calculateTotalSalary(company, 'Engineering')}`); 
+
+// Create a Function to Calculate the Total Salary for All Departments
+function calculateCompanySalary(company) {
+    let totalSalary = 0;
+    for (const department of company.departments) {
+        for (const employee of department.employees) {
+            totalSalary += employee.salary;
+            totalSalary += calculateEmployeeSalary(employee);
+        }
+    }
+    return totalSalary;
+}
+console.log(`Total salary for all departments: $${calculateCompanySalary(company)}`);
+    
